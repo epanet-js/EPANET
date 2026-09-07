@@ -71,6 +71,33 @@ int DLLEXPORT EN_deleteproject(EN_Project p)
     return 0;
 }
 
+int DLLEXPORT EN_setprivatedata(EN_Project p, void *data)
+/*----------------------------------------------------------------
+**  Input:   data = opaque host-defined pointer (or NULL)
+**  Output:  none
+**  Returns: error code
+**  Purpose: attaches an opaque host data pointer to a project
+**----------------------------------------------------------------
+*/
+{
+    if (p == NULL) return 102;
+    p->private_data = data;
+    return 0;
+}
+
+void * DLLEXPORT EN_getprivatedata(EN_Project p)
+/*----------------------------------------------------------------
+**  Input:   none
+**  Output:  none
+**  Returns: the opaque host data pointer, or NULL if none/invalid
+**  Purpose: retrieves the opaque host data pointer of a project
+**----------------------------------------------------------------
+*/
+{
+    if (p == NULL) return NULL;
+    return p->private_data;
+}
+
 int DLLEXPORT EN_runproject(EN_Project p, const char *inpFile,
                             const char *rptFile, const char *outFile,
                             void (*pviewprog)(char *))

@@ -73,6 +73,25 @@ typedef struct Project *EN_Project;
   int DLLEXPORT EN_deleteproject(EN_Project ph);
 
   /**
+  @brief Attaches an opaque, host-defined data pointer to a project.
+  @param ph an EPANET project handle.
+  @param data a pointer to arbitrary host data (or NULL to clear it).
+  @return an error code.
+
+  The pointer is stored on the project and never dereferenced by EPANET; the
+  host is responsible for its lifetime. Retrieve it with ::EN_getprivatedata.
+  */
+  int DLLEXPORT EN_setprivatedata(EN_Project ph, void *data);
+
+  /**
+  @brief Retrieves the opaque, host-defined data pointer attached to a project.
+  @param ph an EPANET project handle.
+  @return the pointer previously set with ::EN_setprivatedata, or NULL if none
+  was set (or if ph is NULL).
+  */
+  void * DLLEXPORT EN_getprivatedata(EN_Project ph);
+
+  /**
   @brief Runs a complete EPANET simulation.
   @param ph an EPANET project handle.
   @param inpFile the name of an existing EPANET-formatted input file.

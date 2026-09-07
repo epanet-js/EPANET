@@ -923,6 +923,8 @@ typedef struct Project {
 
   void (* viewprog) (char *);    // Pointer to progress viewing function
 
+  void *private_data;            // Opaque per-project data for host extensions
+
 } Project, *EN_Project;
 
 #endif
