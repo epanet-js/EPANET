@@ -232,9 +232,6 @@ int readdata(Project *pr)
             else
             {
                 sect = -1;
-                parser->ErrTok = 0;
-                errsum++;
-                inperrmsg(pr, 299, sect, line);
                 continue;
             }
         }
