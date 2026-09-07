@@ -921,6 +921,8 @@ typedef struct Project {
     TmpOutFname[MAXFNAME+1],     // Temporary output file name
     TmpStatFname[MAXFNAME+1];    // Temporary statistic file name
 
+  void **ext_slots;              // Per-extension private-data slots (owned by extensions.c)
+
   void (* viewprog) (char *);    // Pointer to progress viewing function
 
   void *private_data;            // Opaque per-project data for host extensions
